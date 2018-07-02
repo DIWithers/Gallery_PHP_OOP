@@ -13,6 +13,13 @@ class Database {
             die("Database connection FAILED: " . mysqli_error());
         }
     }
+    public function query($sql) {
+        $result = mysqli_query($this->connection, $sql);
+        if (!$result) {
+            die("Database query FAILED: " . mysqli_error());
+        }
+        return $result;
+    }
 } 
 $database = new Database();
 ?>
