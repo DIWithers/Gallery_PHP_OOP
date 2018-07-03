@@ -1,5 +1,6 @@
 <?php 
     // checks for file inclusion and corrects if forgotten
+    spl_autoload_register("classAutoLoader");
     function classAutoLoader($class) {
         $class = strtolower($class);
         $path = "includes/{$class}.php";
@@ -8,6 +9,8 @@
         }
         else die ("ERROR : The filename {$class}.php was not found.");
     }
-    spl_autoload_register("classAutoLoader");
+    function redirect($location) {
+        header("Location: {$location}");
+    }
 
 ?>

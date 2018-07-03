@@ -34,5 +34,17 @@
             $all_properties = get_object_vars($this);
             return array_key_exists($property, $all_properties);
         }
+        public static function verify_user() {
+            global $database;
+            $username = $database->escape_string($username);
+            $password = $database->escape_string($password);
+            $sql = "SELECT * FROM users WHERE ";
+            $sql .= "username = '{$username}' ";
+            $sql .= "AND password = '{$password}' ";
+            $sql .= "LIMIT 1";
+
+            $result = self::run_query($sql);
+            return !empty($result) ? array_shift($result) : false;
+        }
     }
 ?>
