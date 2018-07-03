@@ -11,8 +11,14 @@
             <?php
             //test
             $found_user = User::find_user_by_id(3);
-                $user = User::instantiate($found_user);
-                echo $user->username;
+            $user = User::instantiate($found_user);
+            echo $user->username . "<br>";
+
+            $users = User::find_all_users();
+            foreach($users as $user) {
+                echo $user->username . "<br>";
+            }
+
             ?>
             <ol class="breadcrumb">
                 <li>

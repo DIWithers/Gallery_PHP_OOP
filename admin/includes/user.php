@@ -10,12 +10,16 @@
             return self::run_query("SELECT * FROM users");
         }
         public static function find_user_by_id($id) {
-            $result = self::run_query("SELECT * FROM users WHERE id={$id} LIMIT 1");
-            return mysqli_fetch_array($result);
+            return self::run_query("SELECT * FROM users WHERE id={$id} LIMIT 1")[0];
         }
         public static function run_query($query) {
             global $database;
-            return $database->query($query); 
+            $query_results = $database->query($query); 
+            $results_array = array();
+            while($row = mysqli_fetch_array($query_results)) {
+                $results_array[] = self::instantiate($row);
+            }
+            return $results_array;
         }
         public static function instantiate($user_result) {
             $user = new self;
