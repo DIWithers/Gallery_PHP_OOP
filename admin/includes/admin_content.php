@@ -8,6 +8,12 @@
                 Blank Page
                 <small>Subheading</small>
             </h1>
+            <?php
+            //test
+            $found_user = User::find_user_by_id(3);
+                $user = User::instantiate($found_user);
+                echo $user->username;
+            ?>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
