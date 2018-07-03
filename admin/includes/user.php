@@ -19,12 +19,16 @@
         }
         public static function instantiate($user_result) {
             $user = new self;
-            $user->id = $user_result['id'];
-            $user->username = $user_result['username'];
-            $user->password = $user_result['password'];
-            $user->first_name = $user_result['first_name'];
-            $user->last_name = $user_result['last_name'];
+            foreach($user_result as $property => $value) {
+                if ($user->has_property($property)) {
+                    $user->$property = $value;
+                }
+            }
             return $user;
+        }
+        private function has_property($property) {
+            $all_properties = get_object_vars($this);
+            return array_key_exists($property, $all_properties);
         }
     }
 ?>
