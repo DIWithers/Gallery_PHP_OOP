@@ -10,7 +10,7 @@
             </h1>
             <?php
             //test
-            $found_user = User::find_user_by_id(3);
+            $found_user = User::find_user_by_id(4);
             $user = User::instantiate($found_user);
             echo $user->username . "<br>";
 
