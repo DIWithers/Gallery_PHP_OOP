@@ -10,8 +10,9 @@
             </h1>
             <?php
             //testing sandbox
-            $user = User::find_user_by_id(7);
-            $user->delete();
+            $user = new User();
+            $user->username = "Dannie83";
+            $user->save();
             ?>
             <ol class="breadcrumb">
                 <li>

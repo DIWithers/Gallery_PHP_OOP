@@ -45,6 +45,11 @@
 
             return self::run_query($sql)[0];
         }
+
+        public function save() {
+            return isset($this->id) ? $this->update() : $this->create();
+        }
+
         public function create() {
             global $database;
             $sql = "INSERT into USERS (username, password, first_name, last_name )";
