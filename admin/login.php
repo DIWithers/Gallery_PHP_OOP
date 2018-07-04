@@ -14,8 +14,8 @@
         }
         else {
             $messsage = "Your username or password is incorrect";
-            $username = "";
-            $password = "";
+            // $username = "";
+            // $password = "";
         }
     }
 ?>
