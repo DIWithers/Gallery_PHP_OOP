@@ -26,6 +26,9 @@ class Database {
         $escaped_string = $this->connection->real_escape_string($string);
         return $escaped_string;
     }
+    public function find_new_id() {
+        return mysqli_insert_id($this->connection);
+    }
 } 
 $database = new Database();
 ?>

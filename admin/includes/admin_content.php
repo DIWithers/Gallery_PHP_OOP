@@ -9,16 +9,7 @@
                 <small>Subheading</small>
             </h1>
             <?php
-            //test
-            $found_user = User::find_user_by_id(4);
-            $user = User::instantiate($found_user);
-            echo $user->username . "<br>";
-
-            $users = User::find_all_users();
-            foreach($users as $user) {
-                echo $user->username . "<br>";
-            }
-
+            //testing sandbox
             ?>
             <ol class="breadcrumb">
                 <li>
