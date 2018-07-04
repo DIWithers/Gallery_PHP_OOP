@@ -5,12 +5,13 @@
         public $password;
         public $first_name;
         public $last_name;
+        protected static $db_table = "users";
 
         public static function find_all_users() {
-            return self::run_query("SELECT * FROM users");
+            return self::run_query("SELECT * FROM " . self::$db_table);
         }
         public static function find_user_by_id($id) {
-            return self::run_query("SELECT * FROM users WHERE id={$id} LIMIT 1")[0];
+            return self::run_query("SELECT * FROM " .  self::$db_table . " WHERE id={$id} LIMIT 1")[0];
         }
         public static function run_query($query) {
             global $database;
@@ -38,7 +39,7 @@
             global $database;
             $username = $database->escape_string($username);
             $password = $database->escape_string($password);
-            $sql = "SELECT * FROM users WHERE ";
+            $sql = "SELECT * FROM " . self::$db_table . " WHERE ";
             $sql .= "username = '{$username}' ";
             $sql .= "AND password = '{$password}' ";
             $sql .= "LIMIT 1";
@@ -52,7 +53,7 @@
 
         public function create() {
             global $database;
-            $sql = "INSERT into USERS (username, password, first_name, last_name )";
+            $sql = "INSERT into " . self::$db_table . " (username, password, first_name, last_name )";
             $sql .= "VALUES('";
             $sql .= $database->escape_string($this->username) . "', '";
             $sql .= $database->escape_string($this->password) . "', '";
@@ -69,7 +70,7 @@
         }
         public function update() {
             global $database;
-            $sql = "UPDATE users SET ";
+            $sql = "UPDATE " . self::$db_table . " SET ";
             $sql .= "username= '" . $database->escape_string($this->username) . "',";
             $sql .= "password= '" . $database->escape_string($this->password) . "',";
             $sql .= "first_name= '" . $database->escape_string($this->first_name) . "',";
@@ -81,8 +82,8 @@
         }
         public function delete(){
             global $database;
-            $sql = "DELETE FROM users ";
-            $sql .= "WHERE id= " . $database->escape_string($this->id);
+            $sql = "DELETE FROM " . self::$db_table;
+            $sql .= " WHERE id= " . $database->escape_string($this->id);
             $sql .= " LIMIT 1";
 
             $database->query($sql);
