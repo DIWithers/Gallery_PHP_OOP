@@ -37,7 +37,7 @@
             return array_key_exists($property, $all_properties);
         }
 
-        protected function get_all_properties() {
+        protected function properties() {
             return get_object_vars($this);
             // $properties = array();
             // foreach(self::$db_table_fields as $db_field) {
@@ -46,6 +46,14 @@
             //     }
             // }
             // return $properties;
+        }
+        protected function clean_properties() {
+            global $database;
+            $clean_properties = array();
+            foreach($this->properties() as $key => $value) {
+                $clean_properties[$key] = $database->escape_string($value);
+            }
+            return $clean_properties;
         }
 
         public static function verify_user($username, $password) {
@@ -66,7 +74,7 @@
 
         public function create() {
             global $database;
-            $properties =  $this->get_all_properties();
+            $properties =  $this->clean_properties();
             $sql = "INSERT into " . self::$db_table . " (" . implode(',', array_keys($properties)) .") ";
             $sql .= "VALUES('" . implode("','", array_values($properties)) . "')";
     
@@ -80,7 +88,7 @@
         }
         public function update() {
             global $database;
-            $properties =  $this->get_all_properties();
+            $properties =  $this->clean_properties();
             $property_pairs = array();
             foreach ($properties as $key => $value) {
                 $property_pairs[] = "{$key}='{$value}'";

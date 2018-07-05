@@ -12,9 +12,9 @@
             //testing sandbox
             /////////////////
             // $user = new User();
-            // $user->username = "Ali";
+            // $user->username = "Alice";
             // $user->first_name = "Al";
-            // $user->last_name = "Green";
+            // $user->last_name = "Loa";
             // $user->password = "123";
             // $user->save();
 
