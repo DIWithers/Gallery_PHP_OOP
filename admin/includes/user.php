@@ -35,6 +35,11 @@
             $all_properties = get_object_vars($this);
             return array_key_exists($property, $all_properties);
         }
+
+        protected function get_all_properties() {
+            return get_object_vars($this);
+        }
+
         public static function verify_user($username, $password) {
             global $database;
             $username = $database->escape_string($username);
@@ -53,7 +58,8 @@
 
         public function create() {
             global $database;
-            $sql = "INSERT into " . self::$db_table . " (username, password, first_name, last_name )";
+            $properties =  $this->get_all_properties();
+            $sql = "INSERT into " . self::$db_table . " (" . implode(',', array_keys($properties)) .") ";
             $sql .= "VALUES('";
             $sql .= $database->escape_string($this->username) . "', '";
             $sql .= $database->escape_string($this->password) . "', '";
