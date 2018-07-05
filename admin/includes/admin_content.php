@@ -12,14 +12,15 @@
             //testing sandbox
             /////////////////
             // $user = new User();
-            // $user->username = "BobR";
+            // $user->username = "BobRob";
             // $user->first_name = "Bobby";
             // $user->last_name = "Ross";
             // $user->password = "123";
             // $user->save();
 
-            // $user = User::find_user_by_id(15);
-            // $user->delete(9);
+            // $user = User::find_by_id(5);
+            // echo $user->username;
+            // $user->delete();
 
             // $user = User::find_user_by_id(14);
             // echo $user->firstname;
