@@ -8,10 +8,10 @@
         protected static $db_table = "users";
         protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
 
-        public static function find_all_users() {
+        public static function find_all() {
             return self::run_query("SELECT * FROM " . self::$db_table);
         }
-        public static function find_user_by_id($id) {
+        public static function find_by_id($id) {
             return self::run_query("SELECT * FROM " .  self::$db_table . " WHERE id={$id} LIMIT 1")[0];
         }
         public static function run_query($query) {
