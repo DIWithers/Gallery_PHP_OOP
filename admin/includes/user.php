@@ -1,5 +1,5 @@
 <?php
-    class User {
+    class User extends DB_Object {
         public $id;
         public $username;
         public $password;
@@ -7,35 +7,6 @@
         public $last_name;
         protected static $db_table = "users";
         protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
-
-        public static function find_all() {
-            return self::run_query("SELECT * FROM " . self::$db_table);
-        }
-        public static function find_by_id($id) {
-            return self::run_query("SELECT * FROM " .  self::$db_table . " WHERE id={$id} LIMIT 1")[0];
-        }
-        public static function run_query($query) {
-            global $database;
-            $query_results = $database->query($query); 
-            $results_array = array();
-            while($row = mysqli_fetch_array($query_results)) {
-                $results_array[] = self::instantiate($row);
-            }
-            return $results_array;
-        }
-        public static function instantiate($user_result) {
-            $user = new self;
-            foreach($user_result as $property => $value) {
-                if ($user->has_property($property)) {
-                    $user->$property = $value;
-                }
-            }
-            return $user;
-        }
-        private function has_property($property) {
-            $all_properties = get_object_vars($this);
-            return array_key_exists($property, $all_properties);
-        }
 
         protected function properties() {
             return get_object_vars($this);
