@@ -12,14 +12,19 @@
             //testing sandbox
             /////////////////
             // $user = new User();
-            // $user->username = "Harp";
-            // $user->first_name = "H";
-            // $user->last_name = "Arp";
+            // $user->username = "Ali";
+            // $user->first_name = "Al";
+            // $user->last_name = "Green";
             // $user->password = "123";
             // $user->save();
 
-            // $user = User::find_user_by_id(9);
+            // $user = User::find_user_by_id(15);
             // $user->delete(9);
+
+            // $user = User::find_user_by_id(14);
+            // echo $user->firstname;
+            // $user->username = "Harriet";
+            // $user->update();
             /////////////////
             ?>
             <ol class="breadcrumb">

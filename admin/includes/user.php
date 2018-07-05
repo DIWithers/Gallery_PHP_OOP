@@ -38,14 +38,14 @@
         }
 
         protected function get_all_properties() {
-            // return get_object_vars($this);
-            $properties = array();
-            foreach(self::$db_table_fields as $db_field) {
-                if (property_exists($this, $db_field)) {
-                    $properties[$db_field] = $this->$db_field;
-                }
-            }
-            return $properties;
+            return get_object_vars($this);
+            // $properties = array();
+            // foreach(self::$db_table_fields as $db_field) {
+            //     if (property_exists($this, $db_field)) {
+            //         $properties[$db_field] = $this->$db_field;
+            //     }
+            // }
+            // return $properties;
         }
 
         public static function verify_user($username, $password) {
@@ -80,12 +80,15 @@
         }
         public function update() {
             global $database;
+            $properties =  $this->get_all_properties();
+            $property_pairs = array();
+            foreach ($properties as $key => $value) {
+                $property_pairs[] = "{$key}='{$value}'";
+            }
+
             $sql = "UPDATE " . self::$db_table . " SET ";
-            $sql .= "username= '" . $database->escape_string($this->username) . "',";
-            $sql .= "password= '" . $database->escape_string($this->password) . "',";
-            $sql .= "first_name= '" . $database->escape_string($this->first_name) . "',";
-            $sql .= "last_name= '" . $database->escape_string($this->last_name) . "' ";
-            $sql .= "WHERE id= " . $database->escape_string($this->id);
+            $sql .= implode(", ", $property_pairs);
+            $sql .= " WHERE id= " . $database->escape_string($this->id);
 
             $database->query($sql);
             return (mysqli_affected_rows($database->connection) == 1) ? true : false;
@@ -98,7 +101,6 @@
 
             $database->query($sql);
             return (mysqli_affected_rows($database->connection) == 1) ? true : false;
-
         }
     }
 ?>
