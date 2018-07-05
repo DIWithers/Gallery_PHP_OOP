@@ -6,6 +6,7 @@
         public $first_name;
         public $last_name;
         protected static $db_table = "users";
+        protected static $db_table_fields = array('username', 'password', 'first_name', 'last_name');
 
         public static function find_all_users() {
             return self::run_query("SELECT * FROM " . self::$db_table);
@@ -37,7 +38,14 @@
         }
 
         protected function get_all_properties() {
-            return get_object_vars($this);
+            // return get_object_vars($this);
+            $properties = array();
+            foreach(self::$db_table_fields as $db_field) {
+                if (property_exists($this, $db_field)) {
+                    $properties[$db_field] = $this->$db_field;
+                }
+            }
+            return $properties;
         }
 
         public static function verify_user($username, $password) {
