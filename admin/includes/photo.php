@@ -5,8 +5,9 @@
         public $title;
         public $description;
         public $filename;
-        public $type;
+        public $filetype;
         public $size;
+        protected static $db_table_fields = array('photo_id', 'title', 'description', 'filename', 'filetype', 'size');
 
     }
 ?>

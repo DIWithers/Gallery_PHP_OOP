@@ -11,12 +11,12 @@
             <?php
             //testing sandbox
             /////////////////
-            // $user = new User();
-            // $user->username = "BobRob";
-            // $user->first_name = "Bobby";
-            // $user->last_name = "Ross";
-            // $user->password = "123";
-            // $user->save();
+            $user = new User();
+            $user->username = "BobRobbbbbb";
+            $user->first_name = "Bobby";
+            $user->last_name = "Ross";
+            $user->password = "123";
+            $user->save();
 
             // $user = User::find_by_id(5);
             // echo $user->username;
@@ -27,10 +27,14 @@
             // $user->username = "Harriet";
             // $user->update();
 
-            $photos = Photo::find_all();
-            foreach($photos as $photo) {
-                echo $photo->title;
-            }
+            // $photos = Photo::find_all();
+            // foreach($photos as $photo) {
+            //     echo $photo->title;
+            // }
+            // $photo = new Photo();
+            // $photo->title = "BobRob";
+            // $photo->size = 20;
+            // $photo->save();
             /////////////////
             ?>
             <ol class="breadcrumb">
