@@ -26,6 +26,11 @@
             // echo $user->firstname;
             // $user->username = "Harriet";
             // $user->update();
+
+            $photos = Photo::find_all();
+            foreach($photos as $photo) {
+                echo $photo->title;
+            }
             /////////////////
             ?>
             <ol class="breadcrumb">
