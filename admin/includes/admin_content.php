@@ -20,6 +20,8 @@
              echo INCLUDES_PATH;
              echo "<br>";
              echo IMAGES_PATH;
+             echo "<br>";
+             echo SITE_ROOT;
 
 
             // $user = User::find_by_id(5);
