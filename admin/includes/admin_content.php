@@ -22,6 +22,7 @@
              echo IMAGES_PATH;
              echo "<br>";
              echo SITE_ROOT;
+             
 
 
             // $user = User::find_by_id(5);
@@ -33,10 +34,10 @@
             // $user->username = "Harriet";
             // $user->update();
 
-            // $photos = Photo::find_all();
-            // foreach($photos as $photo) {
-            //     echo $photo->title;
-            // }
+            $photos = Photo::find_all();
+            foreach($photos as $photo) {
+                echo $photo->title;
+            }
             // $photo = new Photo();
             // $photo->title = "BobRob";
             // $photo->size = 20;

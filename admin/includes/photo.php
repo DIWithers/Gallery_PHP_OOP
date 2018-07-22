@@ -34,7 +34,7 @@
             else {
                 $this->filename = basename($file['name']);
                 $this->tmp_path = $file['tmp_name'];
-                $this->type = $file['type'];
+                $this->filetype = $file['type'];
                 $this->size = $file['size'];
             }
         }
@@ -43,29 +43,29 @@
             if ($this->photo_id) {
                 $this->update();
             }
-            if (!empty($this->errors)) {
-                return false;
-            }
-            if (empty($this->filename) || empty($this->tmp_path)) {
-                $this->errors[] = "Error: File not available.";
-                return false;
-            }
-
-            $target_path = SITE_ROOT . DS. 'admin' . DS . $this->upload_directory . DS . $this->filename;
-            
-            if (file_exists($target_path)) {
-                $this->errors[] = "Error: The file {$this->filename} already exists.";
-                return false;
-            }
-            if (move_uploaded_file($this->tmp_path, $target_path)) {
-                if ($this->create()) {
-                    unset($this->tmp_path);
-                    return true;
-                }
-            }
             else {
-                $this->errors[] = "Error: It is possible you do not have the proper permissions for this file directory.";
-                return false;
+                if (!empty($this->errors)) {
+                    return false;
+                }
+                if (empty($this->filename) || empty($this->tmp_path)) {
+                    $this->errors[] = "Error: File not available.";
+                    return false;
+                }
+                $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+                if (file_exists($target_path)) {
+                    $this->errors[] = "Error: The file {$this->filename} already exists.";
+                    return false;
+                }
+                if (move_uploaded_file($this->tmp_path, $target_path)) {
+                    if ($this->create()) {
+                        unset($this->tmp_path);
+                        return true;
+                    }
+                }
+                else {
+                    $this->errors[] = "Error: It is possible you do not have the proper permissions for this file directory.";
+                    return false;
+                }
             }
         }
     }

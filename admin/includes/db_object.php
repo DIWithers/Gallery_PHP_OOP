@@ -1,3 +1,5 @@
+
+<!-- $ tail -f /Applications/MAMP/logs/php_error.log   /for errors/ -->
 <?php 
     class DB_Object {
         public static function find_all() {
@@ -28,10 +30,18 @@
         private function has_property($property) {
             $all_properties = get_object_vars($this);
             return array_key_exists($property, $all_properties);
+            // return property_exists($this, $the_attribute);
         }
         protected function properties() {
-            return get_object_vars($this);
+            $properties = array();
+            foreach(static::$db_table_fields as $db_field) {
+                if (property_exists($this, $db_field)) {
+                    $properties[$db_field] = $this->$db_field;
+                 }
+              }
+            return $properties;
         }
+        
         protected function clean_properties() {
             global $database;
             $clean_properties = array();
@@ -47,17 +57,18 @@
         public function create() {
             global $database;
             $properties =  $this->clean_properties();
-            $sql = "INSERT into " . static::$db_table . " (" . implode(',', array_keys($properties)) .") ";
+            $sql = "INSERT INTO " . static::$db_table . " (" . implode(',', array_keys($properties)) .") ";
             $sql .= "VALUES('" . implode("','", array_values($properties)) . "')";
     
             if($database->query($sql)) {
-                $this->id =  $database->find_new_id();
+                $this->id = $database->find_new_id();
                 return true;
             }
             else {
                 return false;
             }
         }
+
         public function update() {
             global $database;
             $properties =  $this->clean_properties();
