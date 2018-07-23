@@ -1,6 +1,6 @@
 <?php 
     class Photo extends DB_Object {
-        public $photo_id;
+        public $id;
         public $title;
         public $description;
         public $filename;
@@ -9,7 +9,7 @@
         public $tmp_path;
         public $upload_directory = "images";
         protected static $db_table = "photos";
-        protected static $db_table_fields = array('photo_id', 'title', 'description', 'filename', 'filetype', 'size');
+        protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'filetype', 'size');
         public $errors = array();
         public $upload_errors_desc =  array(
             UPLOAD_ERR_OK => "There is no error, the file uploaded with success",
@@ -44,7 +44,7 @@
         }
 
         public function save() {
-            if ($this->photo_id) {
+            if ($this->id) {
                 $this->update();
             }
             else {
@@ -70,6 +70,15 @@
                     $this->errors[] = "Error: It is possible you do not have the proper permissions for this file directory.";
                     return false;
                 }
+            }
+        }
+        public function delete_photo() {
+            if ($this->delete()) {
+                $target_path =  SITE_ROOT . DS . 'admin' . DS . $this->image_path();
+                return unlink($target_path) ? true : false;
+            }
+            else {
+                return false;
             }
         }
     }

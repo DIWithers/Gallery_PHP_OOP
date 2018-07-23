@@ -1,13 +1,15 @@
-<?php include("includes/header.php"); ?>
+<?php include("includes/init.php"); ?>
 <?php if (!$session->is_signed_in()) {redirect("login.php");}?>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <?php include("includes/top_nav.php") ?>
-            <?php include("includes/side_nav.php") ?>
-        </nav>
 
-        <div id="page-wrapper">
-        <?php include("includes/admin_content.php") ?>
-        </div>
-
-  <?php include("includes/footer.php"); ?>
+  <?php 
+    $id = $_GET['id'];
+    if (empty($id)) {
+      redirect("../photos.php");
+    }
+    $photo = Photo::find_by_id($_GET['id']);
+    if ($photo) {
+      $photo->delete_photo();
+    }
+      redirect("../photos.php");
+  ?>

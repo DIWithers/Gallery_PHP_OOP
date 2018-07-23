@@ -32,14 +32,14 @@
                             <tbody>
                             <?php foreach($photos as $photo) : ?>
                                 <tr>
-                                    <td><img src="<?php echo $photo->image_path() ?>" alt="<?php echo $photo->title; ?>"/>
+                                    <td class="photo"><img src="<?php echo $photo->image_path() ?>" alt="<?php echo $photo->title; ?>"/>
                                         <div class="pictures_link">
-                                            <a href="delete_photo.php/?id=<?php echo $photo->photo_id ?>">Delete</a>
-                                            <a href="edit_photo.php/?id=<?php echo $photo->photo_id ?>">Edit</a>
-                                            <a href="view_photo.php/?id=<?php echo$photo->photo_id ?>">View</a>
+                                            <a href="delete_photo.php/?id=<?php echo $photo->id ?>">Delete</a>
+                                            <a href="edit_photo.php/?id=<?php echo $photo->id ?>">Edit</a>
+                                            <a href="view_photo.php/?id=<?php echo$photo->id ?>">View</a>
                                         </div>
                                     </td>
-                                    <td><?php echo $photo->photo_id; ?> </td>
+                                    <td><?php echo $photo->id; ?> </td>
                                     <td><?php echo $photo->filename; ?></td>
                                     <td><?php echo $photo->title; ?></td>
                                     <td><?php echo $photo->size; ?></td>

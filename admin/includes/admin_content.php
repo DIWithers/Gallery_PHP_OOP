@@ -17,11 +17,11 @@
             // $user->last_name = "Ross";
             // $user->password = "123";
             // $user->save();
-             echo INCLUDES_PATH;
-             echo "<br>";
-             echo IMAGES_PATH;
-             echo "<br>";
-             echo SITE_ROOT;
+            //  echo INCLUDES_PATH;
+            //  echo "<br>";
+            //  echo IMAGES_PATH;
+            //  echo "<br>";
+            //  echo SITE_ROOT;
              
 
 
@@ -29,15 +29,17 @@
             // echo $user->username;
             // $user->delete();
 
-            // $user = User::find_user_by_id(14);
-            // echo $user->firstname;
+            // $user = User::find_by_id(10);
+            // echo $user->first_name;
+            // $photo = Photo::find_by_id(11);
+            // echo $photo->filename;
             // $user->username = "Harriet";
             // $user->update();
 
-            $photos = Photo::find_all();
-            foreach($photos as $photo) {
-                echo $photo->title;
-            }
+            // $photos = Photo::find_all();
+            // foreach($photos as $photo) {
+            //     echo $photo->title;
+            // }
             // $photo = new Photo();
             // $photo->title = "BobRob";
             // $photo->size = 20;
