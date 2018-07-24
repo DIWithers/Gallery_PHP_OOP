@@ -2,12 +2,17 @@
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <?php 
-    if (isset($_POST['update'])) {
+    $user =  new User();
+    $photo = new Photo();
+    if (isset($_POST['create'])) {
         if ($user) {
-            $user->title = $_POST['title'];
-            $user->caption = $_POST['caption'];
-            $user->alt_text = $_POST['alt_text'];
-            $user->description = $_POST['description'];
+            $user->username = $_POST['username'];
+            $user->first_name = $_POST['first_name'];
+            $user->last_name = $_POST['last_name'];
+            $user->password = $_POST['password'];
+            $photo->set_file($_FILES['user_image']);
+            $photo->save();
+            $user->user_image = $photo->filename;
             $user->save();
         }
     }
@@ -26,7 +31,11 @@
                         <small>Add</small>
                     </h1>
                     <form action="" method="post" enctype="multipart/form-data">
-                        <div class="col-md-8">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="form-group">
+                                <label for="img_upload">Upload Photo</label>
+                                <input type="file" name="user_image" class="form-control">
+                            </div>
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control">
@@ -42,6 +51,9 @@
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <input type="password" name="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="create" class="btn btn-primary pull-right">
                             </div>
                         </div>
                     </form>
