@@ -23,6 +23,7 @@
             $user->password = $_POST['password'];
             $user->user_image = $photo->filename;
             $user->save();
+            redirect("edit_user.php?id={$user->id}");
         }
     }
 ?>
@@ -65,6 +66,7 @@
                                 <input type="password" name="password" value="<?php echo $user->password ?>" class="form-control">
                             </div>
                             <div class="form-group">
+                                <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
                                 <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
                             </div>
                         </div>
