@@ -2,6 +2,9 @@
     width: 200px;
     border-radius: 10px;
 }
+.user-image {
+    height: 75px;
+}
 
 .photo-info-box {
     border: 1px solid #e5e5e5;
