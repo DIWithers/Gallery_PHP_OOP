@@ -6,10 +6,12 @@
         public $filename;
         public $filetype;
         public $size;
+        public $alt_text;
+        public $caption;
         public $tmp_path;
         public $upload_directory = "images";
         protected static $db_table = "photos";
-        protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'filetype', 'size');
+        protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'filetype', 'size', 'alt_text', 'caption');
         public $errors = array();
         public $upload_errors_desc =  array(
             UPLOAD_ERR_OK => "There is no error, the file uploaded with success",
