@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="description">Description</label>
-                                <textarea name="description" id="" cols="30" rows="10" class="form-control"><?php echo $photo->description ?></textarea>
+                                <textarea name="description" id="photo_desc" cols="30" rows="10" class="form-control"><?php echo $photo->description ?></textarea>
                             </div>
                         </div>
                         <!-- start / need to check form -->
