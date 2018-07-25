@@ -34,7 +34,6 @@
                                     <td><?php echo $comment->author; ?>
                                         <div class="actions_link">
                                             <a href="delete_comment.php?id=<?php echo $comment->id ?>">Delete</a>
-                                            <a href="edit_comment.php?id=<?php echo $comment->id ?>">Edit</a>
                                         </div>
                                     </td>
                                     <td><?php echo $comment->body; ?></td>
