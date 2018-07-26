@@ -59,8 +59,7 @@
                                     <i class="fa fa-user fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">8
-                                    </div>
+                                    <div class="huge"><?php echo User::count_all(); ?></div>
                                     <div>Users</div>
                                 </div>
                             </div>
@@ -82,7 +81,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">8</div>
+                                    <div class="huge"><?php echo Comment::count_all(); ?></div>
                                     <div>Comments</div>
                                 </div>
                             </div>
