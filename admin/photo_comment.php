@@ -23,7 +23,6 @@
                         Comments
                         <small>Subheading</small>
                     </h1>
-                    <a href="add_comment.php" class="btn btn-primary">Add Comment</a>
                     <h4><?php echo $message ?></h4>
                     <div class="col-md-12">
                         <table class="table table-hover">
