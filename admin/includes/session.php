@@ -3,10 +3,12 @@
         private $signed_in = false;
         public $user_id;
         public $message;
+        public $count;
 
         function __construct() {
             session_start();
             $this->check_login();
+            $this->visitor_count();
             $this->check_message();
         }
         private function check_login() {
@@ -45,6 +47,12 @@
                 $this->message = $_SESSION['message'];
             }
             else $this->message = "";
+        }
+        public function visitor_count() {
+            if (isset($_SESSION['count'])) {
+                return $this->count = $_SESSION['count']++;
+            }
+            else return $_SESSION['count'] = 1;
         }
     }
     $session = new Session();
