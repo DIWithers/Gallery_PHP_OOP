@@ -11,6 +11,6 @@
     if ($comment) {
       $comment->delete();
     }
-    if (isset($id)) redirect("photo_comment.php?id=" . $comment->photo_id);
+    if (isset($id)) redirect("photo_comment.php?id={$comment->photo_id}");
     else redirect("comments.php");
   ?>
