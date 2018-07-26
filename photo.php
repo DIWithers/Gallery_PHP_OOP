@@ -6,6 +6,7 @@
     if (empty($id)) redirect("index.php");
     if ($id) {
         $photo = Photo::find_by_id($_GET['id']);
+        $photo_path = 'admin' . DS . 'images'. DS . $photo->filename;
     }
     $comments = Comment::find_comments($photo->id);
     if (isset($_POST['submit'])) {
@@ -87,7 +88,7 @@
                     <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
                     <hr>
                     <h4><?php echo $message ?></h4>
-                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <img class="img-responsive" src="<?php echo $photo_path ?>" alt="">
                     <hr>
                     <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
