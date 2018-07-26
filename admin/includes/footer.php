@@ -21,17 +21,19 @@
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Task', 'Counts'],
+          ['Views', <?php echo $session->count; ?>],
+          ['Photos', <?php echo Photo::count_all(); ?>],
+          ['Comments',  <?php echo Comment::count_all(); ?>],
+          ['Users', <?php echo User::count_all(); ?>]
         ]);
 
         var options = {
           title: 'My Daily Activities',
           is3D: true,
+          legend: 'none',
+          pieSliceText: 'label',
+          backgroundColor: 'transparent'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
