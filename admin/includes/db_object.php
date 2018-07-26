@@ -122,5 +122,12 @@
             $database->query($sql);
             return (mysqli_affected_rows($database->connection) == 1) ? true : false;
         }
+        public static function count_all() {
+            global $database;
+            $sql = "SELECT COUNT(*) FROM " . static::$db_table;
+            $results = $database->query($sql);
+            $row = mysqli_fetch_array($results);
+            return array_shift($row);
+        }
     }
 ?>

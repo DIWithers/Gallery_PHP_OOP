@@ -35,7 +35,7 @@
                                 <tr>
                                     <td><?php echo $user->id; ?> </td>
 
-                                    <td><img class="admin-user-thumbnail user-image" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->title; ?>"/></td>
+                                    <td><img class="admin-user-thumbnail user-image" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->username; ?>"/></td>
                                     <td><?php echo $user->username; ?>
                                         <div class="actions_link">
                                             <a href="delete_user.php?id=<?php echo $user->id ?>">Delete</a>
