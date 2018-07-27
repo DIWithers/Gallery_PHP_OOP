@@ -27,52 +27,54 @@
         }
     }
 ?>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <?php include("includes/top_nav.php") ?>
-        <?php include("includes/side_nav.php") ?>
-    </nav>
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        User
-                        <small>Edit</small>
-                    </h1>
-                    <div class="col-md-3">
-                        <img class="img-responsive thumbnail user-image" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->user_image; ?>"/>
-                    </div>
-                    <form action="" method="post" enctype="multipart/form-data">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="img_upload">Upload New Photo</label>
-                                <input type="file" name="user_image" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="username">Username</label>
-                                <input type="text" name="username" value="<?php echo $user->username ?>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="first_name">First Name</label>
-                                <input type="text" name="first_name" value="<?php echo $user->first_name ?>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="last_name">Last Name</label>
-                                <input type="text" name="last_name" value="<?php echo $user->last_name ?>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" name="password" value="<?php echo $user->password ?>" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
-                                <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
-                            </div>
-                        </div>
-                    </form>
+<?php include("includes/photo_library_modal.php"); ?>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <?php include("includes/top_nav.php") ?>
+    <?php include("includes/side_nav.php") ?>
+</nav>
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    User
+                    <small>Edit</small>
+                </h1>
+                <div class="col-md-4">
+                    <a href="#" data-toggle="modal" data-target="#photo-library">
+                    <img class="img-responsive" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->user_image; ?>"/>
+                    </a>
                 </div>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="img_upload">Upload New Photo</label>
+                            <input type="file" name="user_image" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" value="<?php echo $user->username ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="first_name">First Name</label>
+                            <input type="text" name="first_name" value="<?php echo $user->first_name ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name</label>
+                            <input type="text" name="last_name" value="<?php echo $user->last_name ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" value="<?php echo $user->password ?>" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+                            <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-  <?php include("includes/footer.php"); ?>
+</div>
+<?php include("includes/footer.php"); ?>

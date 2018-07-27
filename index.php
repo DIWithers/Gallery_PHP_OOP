@@ -10,6 +10,7 @@
     $photos = Photo::run_query($sql);
 ?>
 <div class="row">
+    <h1>Photo Gallery</h1>
     <div class="col-md-12">
         <div class="thumbnails row">
             <?php foreach($photos as $photo) : ?>
