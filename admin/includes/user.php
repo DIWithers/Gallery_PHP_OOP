@@ -25,7 +25,8 @@
             $sql .= "AND password = '{$password}' ";
             $sql .= "LIMIT 1";
 
-            return self::run_query($sql)[0];
+            $results = self::run_query($sql)[0];
+            return empty($results) ? false : array_shift($results);
         }
 
         public function save_user_image($user_image, $user_id) {
