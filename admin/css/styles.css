@@ -41,7 +41,7 @@
 }
 .modal-body {
     overflow: auto;
-    height: 500px !important;
+    height: 90% !important;
     min-height: 300px !important;
 }
 .modal_thumbnails {

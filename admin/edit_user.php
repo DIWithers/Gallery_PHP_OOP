@@ -1,4 +1,6 @@
 <?php include("includes/header.php"); ?>
+<?php include("includes/photo_library_modal.php"); ?>
+
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 <?php 
     $id = $_GET['id'];
@@ -27,7 +29,6 @@
         }
     }
 ?>
-<?php include("includes/photo_library_modal.php"); ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <?php include("includes/top_nav.php") ?>
     <?php include("includes/side_nav.php") ?>
@@ -68,7 +69,7 @@
                             <input type="password" name="password" value="<?php echo $user->password ?>" class="form-control">
                         </div>
                         <div class="form-group">
-                            <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
+                            <a id="user-id-delete" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn btn-danger">Delete</a>
                             <input type="submit" name="update" value="Update" class="btn btn-primary pull-right">
                         </div>
                     </div>
