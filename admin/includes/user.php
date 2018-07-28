@@ -27,5 +27,11 @@
 
             return self::run_query($sql)[0];
         }
+
+        public function save_user_image($user_image, $user_id) {
+            $this->user_image = $user_image;
+            $this->id = $user_id;
+            $this->save();
+        }
     }
 ?>

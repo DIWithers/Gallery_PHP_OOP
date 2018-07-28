@@ -43,7 +43,7 @@
                 </h1>
                 <div class="col-md-4">
                     <a href="#" data-toggle="modal" data-target="#photo-library">
-                    <img class="img-responsive" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->user_image; ?>"/>
+                    <img id="user-image" class="img-responsive" src="<?php echo $user->image_path_or_placeholder() ?>" alt="<?php echo $user->user_image; ?>"/>
                     </a>
                 </div>
                 <form action="" method="post" enctype="multipart/form-data">
