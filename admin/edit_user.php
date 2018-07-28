@@ -13,20 +13,22 @@
 ?>
 <?php 
     if (isset($_POST['update'])) {
-        if (!empty($_FILES['user_image'])) {
-            $photo = new Photo();
-            $photo->set_file($_FILES['user_image']);
-            $photo->save();
-        }
+        $file_loaded = !empty($_FILES['user_image']);
         if ($user) {
             $user->username = $_POST['username'];
             $user->first_name = $_POST['first_name'];
             $user->last_name = $_POST['last_name'];
             $user->password = $_POST['password'];
-            $user->user_image = $photo->filename;
-            $user->save();
+            $user->user_image = $file_loaded ? add_new_photo_and_get_name() : User::get_latest_photo($id);
+            $user->update();
             redirect("edit_user.php?id={$user->id}");
         }
+    }
+    function add_new_photo_and_get_name() {
+        $photo = new Photo();
+        $photo->set_file($_FILES['user_image']);
+        $photo->save();
+        return $photo->filename;
     }
 ?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

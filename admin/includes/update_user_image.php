@@ -1,9 +1,9 @@
 <?php require_once("init.php"); ?>
 <?php 
-    $user = new User();
-    $image_filename = $_POST['image_filename'];
-    $user_id =  $_POST['user_id'];
-    if (isset($image_filename)) {
-        $user->save_user_image($image_filename, $user_id);
-    }
+    $user_image = $database->escape_string($_POST['image_filename']);
+    $user_id = $database->escape_string($_POST['user_id']);
+    $user->user_image = $user_image;
+    $user = User::find_by_id($user_id);
+    $user->user_image = $user_image;
+    $user->update();
 ?>

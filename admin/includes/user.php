@@ -28,11 +28,13 @@
             $results = self::run_query($sql)[0];
             return empty($results) ? false : array_shift($results);
         }
-
-        public function save_user_image($user_image, $user_id) {
-            $this->user_image = $user_image;
-            $this->id = $user_id;
-            $this->save();
+        public static function get_latest_photo($id) {
+            $sql = "SELECT user_image FROM " . self::$db_table . " WHERE ";
+            $sql .= "id = '{$id}' ";
+            $sql .= "LIMIT 1";
+            
+            $results = self::run_query($sql)[0];
+            return empty($results) ? false : array_shift($results);
         }
     }
 ?>

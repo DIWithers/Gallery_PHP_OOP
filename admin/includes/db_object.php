@@ -1,5 +1,4 @@
 
-<!-- $ tail -f /Applications/MAMP/logs/php_error.log   /for errors/ -->
 <?php 
     class DB_Object {
         public $errors = array();
@@ -103,7 +102,7 @@
             $properties =  $this->clean_properties();
             $property_pairs = array();
             foreach ($properties as $key => $value) {
-                $property_pairs[] = "{$key}='{$value}'";
+                if (!empty($value)) $property_pairs[] = "{$key}='{$value}'";
             }
 
             $sql = "UPDATE " . static::$db_table . " SET ";
