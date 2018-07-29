@@ -13,7 +13,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <p class="bg-success"><?php echo $message ?></p>
+                    <h4 class="bg-success"><?php echo $message ?></h4>
                     <h1 class="page-header">
                         Users
                     </h1>
