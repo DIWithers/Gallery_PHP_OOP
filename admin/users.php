@@ -13,10 +13,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h4 class="bg-success"><?php echo $message ?></h4>
                     <h1 class="page-header">
                         Users
                     </h1>
+                    <h4 class="bg-success"><?php echo $message ?></h4>
                     <a href="add_user.php" class="btn btn-primary">Add User</a>
                     <div class="col-md-12">
                         <table class="table table-hover">

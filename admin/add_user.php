@@ -14,6 +14,8 @@
             $photo->save();
             $user->user_image = $photo->filename;
             $user->save();
+            $session->message("User added.");
+            redirect("users.php");
         }
     }
 ?>

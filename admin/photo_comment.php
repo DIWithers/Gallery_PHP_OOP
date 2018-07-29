@@ -21,7 +21,6 @@
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Comments
-                        <small>Subheading</small>
                     </h1>
                     <h4><?php echo $message ?></h4>
                     <div class="col-md-12">
