@@ -21,7 +21,8 @@
             $user->password = $_POST['password'];
             $user->user_image = $file_loaded ? add_new_photo_and_get_name() : User::get_latest_photo($id);
             $user->update();
-            redirect("edit_user.php?id={$user->id}");
+            redirect("users.php");
+            $session->message("The user {$user->username} has been updated");
         }
     }
     function add_new_photo_and_get_name() {
