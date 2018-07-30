@@ -8,6 +8,11 @@ $(document).ready(function() {
     var image_filename;
     var photo_id;
 
+    $(".info-box-header").click(function() {
+        $(".inside").slideToggle("fast");
+        $("#toggle").toggleClass("glyphicon-menu-down glyphicon , glyphicon-menu-up glyphicon");
+    });
+
     $(".modal_thumbnails").click(function() {
         $("#set_user_image").prop('disabled', false);
         $(this).addClass('selected');
