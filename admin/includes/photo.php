@@ -9,9 +9,10 @@
         public $alt_text;
         public $caption;
         public $tmp_path;
+        public $user_id;
         public $upload_directory = "images";
         protected static $db_table = "photos";
-        protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'filetype', 'size', 'alt_text', 'caption');
+        protected static $db_table_fields = array('id', 'title', 'description', 'filename', 'filetype', 'size', 'alt_text', 'caption', 'user_id');
         
         public function image_path() {
             return $this->upload_directory . DS . $this->filename;
