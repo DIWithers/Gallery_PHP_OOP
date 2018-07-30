@@ -25,7 +25,7 @@
             $sql .= "AND password = '{$password}' ";
             $sql .= "LIMIT 1";
 
-            $results = self::run_query($sql)[0];
+            $results = self::run_query($sql);
             return empty($results) ? false : array_shift($results);
         }
         public static function get_latest_photo($id) {
